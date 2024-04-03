@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Virgin Most Prudent | Legion of Mary</title>
+    <script
+      src="https://kit.fontawesome.com/de31d7f9e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- particles.js -->
+      <div id="particles-js"></div>
+      <!-- header -->
+      <header class="header">
+        <div class="heading">
+          <i class="fa-solid fa-hands-praying"></i>
+          <h3>Legion of Mary</h3>
+        </div>
+        <button
+          class="mobile-nav-toggle"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Menu</span>
+        </button>
+        <nav>
+          <ul
+            class="header__nav"
+            id="primary-navigation"
+            class="header__nav--links"
+            data-visible="false"
+          >
+            <li class="header__nav--links--item home">
+              <a href="index.html">Home</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="gallery.html">Gallery</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="officer.html">Officers</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="prayer.html">Prayers</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="publication.html">Publications</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="about.html">About</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section class="officer">
+        <div class="img">
+          <img src="img/praesidium/curia-officers-1.JPG" alt="" />
+        </div>
+
+        <div class="officer__text">
+          <h2 class="officer__text--title">KNOW YOUR CURIA OFFICERS</h2>
+          <p class="officer__text--para">
+            Our Lady Virgin Most Prudent Curia, Fatima Jos currently have 4
+            officer. Bro Emmanuel Duru the curia president,was appointed in the
+            year 2018. He is also a corresponding secretary and a vice
+            president, of Our Lady of Perpetual Help. <br />
+            Bro Francis Anene joined the Legion of Mary in the year 2007. He is
+            the current Secretary of Virgin Most Amiable presidium. He was
+            elected as the Curia Vice President on December, 2020 and is serving
+            in that capacity till date haven been re-elected for a second term.
+            <br />
+            Brother Cornelius Ogochukwu Okonkwo, joined the senior Praesidium of
+            the Legion of Mary in the year 2005, and is currently the secretary
+            of our Lady Virgin Most Prudent Curia Fatima and was elected on the
+            28th of November 2021. He is also the president of our Lady Most
+            Admirable Praesidium appointed on the 23rd of May 2021. He has
+            previously served as the vice-president of the same Praesidium for
+            two terms. To the glory of God, He is also the Chairperson of The
+            Devotion Committee of The Legion of Mary in Fatima. Sis Francisca
+            Nwokocha who is the current Curia Treasurer also serving her first
+            tenure to the glory of God. <br />
+            The curia also appointed Bro Vitus as the Chairperson of the
+            marriage commitee, and also appointed Bro Amadi Franklin and his
+            assistant, Bro Chikezie Simon as the moderators and handlers of the
+            patrician meetings in the parish.
+          </p>
+        </div>
+      </section>
+      <section class="centenary">
+        <div class="centenary__img">
+          <img src="img/praesidium/legion-100-logo.png" alt="" />
+        </div>
+        <div class="centenary__text">
+          <h2 class="centenary__text--title">
+            Centenary of the Legion of Mary - 2021-2022
+          </h2>
+          <p class="centenary__text--para">
+            The Legion of Mary celebrated 100 years in 2021. It was a time of
+            joy, of celebration and of thanksgiving.
+          </p>
+          <a target="_blank" href="https://www.legionofmary.ie/centenary">
+            Click here for more information
+          </a>
+        </div>
+      </section>
+      <footer class="footer">
+        <h3 class="footer--title">
+          &copy; 2024 <code> chike.dev/ </code> & Kizzy Imagery. All rights
+          reserved.
+        </h3>
+      </footer>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script type="module" src="js/shared.js"></script>
+
+    <script type="module">
+      import { observeNavigation } from "./js/shared.js";
+
+      document.addEventListener("DOMContentLoaded", function () {
+        observeNavigation(".img");
+      });
+    </script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- stats.js lib -->
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+  </body>
+</html>

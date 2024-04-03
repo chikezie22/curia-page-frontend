@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Virgin Most Prudent | Legion of Mary</title>
+    <script
+      src="https://kit.fontawesome.com/de31d7f9e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="bg">
+        <!-- particles.js -->
+        <div id="particles-js"></div>
+        <!-- header -->
+        <header class="header">
+          <div class="heading">
+            <i class="fa-solid fa-hands-praying"></i>
+            <h3>Legion of Mary</h3>
+          </div>
+          <button
+            class="mobile-nav-toggle"
+            aria-controls="primary-navigation"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Menu</span>
+          </button>
+          <nav>
+            <ul
+              class="header__nav"
+              id="primary-navigation"
+              class="header__nav--links"
+              data-visible="false"
+            >
+              <li class="header__nav--links--item home">
+                <a href="index.html">Home</a>
+              </li>
+              <li class="header__nav--links--item">
+                <a href="gallery.html">Gallery</a>
+              </li>
+              <li class="header__nav--links--item">
+                <a href="officer.html">Officers</a>
+              </li>
+              <li class="header__nav--links--item">
+                <a href="prayer.html">Prayers</a>
+              </li>
+              <li class="header__nav--links--item">
+                <a href="publication.html">Publications</a>
+              </li>
+              <li class="header__nav--links--item">
+                <a href="about.html">About</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <div>
+          <div class="about">
+            <div class="before"></div>
+            <h3 class="about__title">
+              HISTORY OF THE LEGION OF MARY IN FATIMA
+            </h3>
+            <p class="about__para">
+              The Legion of Mary or the Legion, for short is a lay Apostolate
+              Association which was established in Dublin Ireland on 7
+              September, 1921. It is the largest apostolic organization of lay
+              people in the Catholic Church, with well over 3 million active
+              members in almost every country of the world. The legion was
+              started in the Archdiocese at St. Theresa’s Parish in 1932. It
+              came to be established in the Parish in the 50s at the Mission
+              School i.e. the Our Lady of Fatima Primary School. Late Mrs.
+              Beatrice Uwaoma was the first female president of the praesidium
+              founded at Fatima Cathedral when its meeting were held at the Our
+              Lady of Fatima Primary School before Fatima Cathedral was built.
+              Rev. Sister Stanislaus OLA of blessed memory was their spiritual
+              guide then. The main aim and purpose of the Legion of Mary is to
+              give glory to God through the sanctification of its members. In
+              other words, the object of the Legion is personal holiness amidst
+              prayers and charitable works as such they conduct religious
+              instructions (at catechism clasees) for the catechumens and run a
+              book stall (formerly a kiosk) since the late 80s (1987). The
+              Refuge of Sinners Praesidium formed in the 80s had the likes of
+              Late. Mrs. Beatrice Uwaoma and some members like catechist, Sir
+              Gabriel C Okonkwo KSJ, Mr. Ferdinard Kenechukwu and Mr. Francis
+              Oslo. Grace: The History of Fatima.
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <h3 class="footer--title">
+          &copy; 2024 <code> chike.dev/ </code> & Kizzy Imagery. All rights
+          reserved.
+        </h3>
+      </footer>
+    </div>
+
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- stats.js lib -->
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+
+    <script src="js/index.js"></script>
+    <script type="module" src="js/shared.js"></script>
+
+    <script type="module">
+      import { observeNavigation } from "./js/shared.js";
+
+      document.addEventListener("DOMContentLoaded", function () {
+        observeNavigation(".before");
+      });
+    </script>
+  </body>
+</html>

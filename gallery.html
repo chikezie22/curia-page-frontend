@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Virgin Most Prudent | Legion of Mary</title>
+    <script
+      src="https://kit.fontawesome.com/de31d7f9e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- header -->
+      <header class="header">
+        <div class="heading">
+          <i class="fa-solid fa-hands-praying"></i>
+          <h3>Legion of Mary</h3>
+        </div>
+        <button
+          class="mobile-nav-toggle"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Menu</span>
+        </button>
+
+        <nav>
+          <ul
+            class="header__nav"
+            id="primary-navigation"
+            class="header__nav--links"
+            data-visible="false"
+          >
+            <li class="header__nav--links--item home">
+              <a href="index.html">Home</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="gallery.html">Gallery</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="officer.html">Officers</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="prayer.html">Prayers</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="publication.html">Publications</a>
+            </li>
+            <li class="header__nav--links--item">
+              <a href="about.html">About</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="gallery">
+        <!-- <div class="blur-div">
+          <img
+            src="/img/praesidium/curia-officers-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div> -->
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/duru-praesidium-Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/duru-praesidium-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/francis-ubani-praesidium-Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/francis-ubani-praesidium-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/Igbo-praesidium-Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/Igbo-praesidium-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/Mirror-of-justice-Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/Mirror-of-justice-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/Nwachukwu-praesidium.Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/Nwachukwu-praesidium-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/ogadi-praesidium-Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/ogadi-praesidium-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/ogochukwu-praesidium-Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/ogochukwu-praesidium-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="
+            background-image: url(img/praesidium/praesidium-outer-view-Small.JPG);
+          "
+        >
+          <img
+            src="img/praesidium/praesidium-outer-view-1.JPG"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="blur-div"
+          style="background-image: url(img/praesidium/praesidium-Small.JPG)"
+        >
+          <img src="img/praesidium/praesidium-1.JPG" alt="" loading="lazy" />
+        </div>
+      </div>
+      <footer class="footer">
+        <h3 class="footer--title">
+          &copy; 2024 <code> chike.dev/ </code> & Kizzy Imagery. All rights
+          reserved.
+        </h3>
+      </footer>
+    </div>
+    <script src="js/index.js"></script>
+    <script type="module" src="js/shared.js"></script>
+
+    <script type="module">
+      import { observeNavigation } from "./js/shared.js";
+
+      document.addEventListener("DOMContentLoaded", function () {
+        observeNavigation(".gallery");
+      });
+    </script>
+    <!-- <script src="../js/gallery.js"></script> -->
+  </body>
+</html>

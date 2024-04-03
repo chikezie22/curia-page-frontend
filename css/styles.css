@@ -1,0 +1,808 @@
+html {
+  --color-primary: #f5f5f5;
+  --color-secondary: #3664f4;
+  --color-tertiary: #ee4b2b;
+  --color-tertiary-m: rgba(250, 73, 64, 0.4);
+  --color-text-grey: #0f0606;
+  --color-text-light: #cccccc;
+  --color-text-link: #0074d9;
+  scroll-behavior: smooth;
+}
+
+.main__content--title {
+  font-size: calc(1.5rem + 5vw);
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  color: var(--color-secondary);
+}
+
+.officer__text--title,
+.centenary__text--title,
+.second__content--title {
+  font-size: calc(1.5rem + 2vw);
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  font-family: "Pacifico", cursive;
+  color: var(--color-secondary);
+  margin-bottom: 1em;
+}
+
+.about__para,
+.general .prayer > p,
+.general .patrician h3,
+.general .patrician h4,
+.general .patrician h5,
+.general .saint__info h3,
+.general .saint__info h4,
+.general .saint__info h5,
+.general .saint__info p,
+.officer__text--para,
+.centenary__text--para,
+footer,
+.second__content--para,
+.main__content--para {
+  font-size: calc(1.2rem + 0.5vw);
+  color: var(--color-text-grey);
+  letter-spacing: 0.2rem;
+}
+
+.about__title,
+.general .prayer__title,
+.general .saint__title,
+.header .heading h3 {
+  font-size: calc(1.2rem + 0.5vw);
+  font-family: "Pacifico", cursive;
+}
+
+.about,
+.publications,
+.general,
+.officer,
+.centenary,
+.gallery,
+.second__img,
+.second__content,
+.main__content,
+.main__img {
+  padding: 6vh 4vw;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1.7;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-primary);
+  overflow-x: hidden;
+}
+
+.activeHeader {
+  background-color: var(--color-tertiary);
+  color: black;
+  padding: 1rem 2rem;
+}
+
+.container {
+  position: relative;
+  display: grid;
+  min-height: min-content;
+  grid-template-columns:
+    [container-start] 1fr [center-start] repeat(
+      8,
+      [col-start] minmax(min-content, 15rem) [col-end]
+    )
+    [center-end] 1fr [container-end];
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: -10;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  font-size: calc(1.2rem + 0.5vw);
+}
+
+i {
+  font-size: calc(1.2rem + 0.5vw);
+}
+
+hr {
+  color: var(--color-text-link);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  color: inherit;
+  isolation: isolate;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure the header spans the full width of the viewport */
+  height: min-content;
+  padding: 1rem 2rem;
+  z-index: 30;
+  grid-column: container-start/-1;
+  background-color: var(--color-tertiary);
+  margin-bottom: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+.header .mobile-nav-toggle {
+  display: none;
+}
+.header .heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__nav {
+  display: flex;
+  gap: 2rem;
+}
+.header__nav--links {
+  gap: 2rem;
+  font-weight: 500;
+  list-style: none;
+}
+.header__nav--links--item .active,
+.header__nav--links .active:visited,
+.header__nav--links .active:active {
+  border-bottom: 2px solid var(--color-secondary);
+  height: 100%;
+  color: white;
+  padding: 0.2rem 0.4rem;
+}
+.header__nav--links--item:last-child {
+  margin-right: 2rem;
+}
+
+@media screen and (width < 50em) {
+  .header {
+    background-color: transparent;
+  }
+  .header .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    background-color: transparent;
+    background-image: url("../img/praesidium/main-menu.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    z-index: 9999;
+    width: 5rem;
+    aspect-ratio: 1;
+    top: 1rem;
+    right: 2rem;
+  }
+  .header .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url("../img/praesidium/close.png");
+  }
+  .header__nav {
+    position: fixed;
+    inset: 0 0 0 30%;
+    z-index: 1000;
+    background: rgba(238, 76, 43, 0.6980392157);
+    backdrop-filter: blur(1rem);
+    min-height: 100vh;
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: min(25vh, 10rem) 5rem;
+  }
+  .header__nav[data-visible="true"] {
+    transform: translateX(0%);
+  }
+  .header__nav--links--item > a {
+    color: #60cbff;
+  }
+}
+.main {
+  min-height: min-content;
+  grid-column: container-start/-1;
+  display: flex;
+  align-items: center;
+}
+.main__content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
+  justify-content: start;
+  align-items: center;
+  width: 50%;
+}
+.main__content--title {
+  line-height: 1.2;
+}
+.main__content--button {
+  align-self: start;
+  padding: 1vh 2vw;
+  font-size: calc(1.2rem + 0.5vw);
+  background-color: var(--color-tertiary);
+  color: var(--color-text-light);
+  border-radius: 0.2em;
+}
+.main__img {
+  width: 50%;
+}
+.main__img img {
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: cover;
+  object-position: center right;
+}
+.main__img img.clip-path {
+  clip-path: polygon(
+    50% 0%,
+    83% 12%,
+    100% 43%,
+    94% 78%,
+    68% 100%,
+    32% 100%,
+    6% 78%,
+    0% 43%,
+    17% 12%
+  );
+}
+
+@media screen and (width < 50em) {
+  .main {
+    display: grid;
+    grid-template-areas: "stack";
+    place-items: center;
+  }
+  .main > * {
+    grid-area: stack;
+    z-index: 1;
+  }
+  .main__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 2;
+  }
+  .main__img {
+    width: 100%;
+    filter: blur(7px);
+  }
+}
+@media screen and (width < 37.5em) {
+  .main__content {
+    align-self: flex-start;
+  }
+  .main__content--title {
+    line-height: 1.6;
+    font-size: calc(1.5rem + 5vw);
+    font-weight: 500;
+  }
+  .main__content--para {
+    font-size: 1.6rem;
+    color: var(--color-text-grey);
+  }
+}
+.second {
+  grid-column: container-start/-1;
+  min-height: min-content;
+  display: flex;
+  align-items: center;
+}
+.second__img {
+  width: 40%;
+}
+.second__img img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.second__img img.clip-path-1 {
+  clip-path: polygon(
+    20% 0%,
+    80% 0%,
+    100% 20%,
+    100% 80%,
+    80% 100%,
+    20% 100%,
+    0% 80%,
+    0% 20%
+  );
+}
+.second__content {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.second__content--title {
+  line-height: 1.2;
+}
+@media screen and (width < 50em) {
+  .second {
+    display: grid;
+    grid-template-areas: "stack";
+    place-items: center;
+  }
+  .second > * {
+    grid-area: stack;
+    z-index: 1;
+  }
+  .second__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 2;
+  }
+  .second__content--title {
+    line-height: 1.5;
+    font-size: calc(1.5rem + 5vw);
+    font-weight: 500;
+  }
+  .second__content--para {
+    font-size: 1.6rem;
+    color: var(--color-text-grey);
+  }
+  .second__img {
+    width: 100%;
+    filter: blur(7px);
+  }
+}
+@media screen and (width < 37.5em) {
+  .second__content--title {
+    line-height: 1.5;
+    font-size: 2.8rem;
+    font-weight: 500;
+  }
+  .second__content--para {
+    font-size: 1.6rem;
+    color: var(--color-text-grey);
+    backdrop-filter: blur(2px);
+  }
+}
+footer {
+  grid-column: container-start/-1;
+  height: min-content;
+  padding: 1rem 2rem;
+  background-color: var(--color-tertiary);
+  text-align: center;
+  color: var(--color-text-light);
+  margin-top: auto;
+}
+
+@media screen and (width < 37.5em) {
+  footer {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.gallery {
+  grid-column: container-start/-1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 10px; /* Gap between items */
+}
+.gallery .blur-div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  animation: pulse 0.4s infinite;
+  background-color: rgba(255, 255, 255, 0.395);
+}
+.gallery .blur-div {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+.gallery .blur-div.loaded::before {
+  content: none;
+  animation: none;
+}
+.gallery .blur-div.loaded img {
+  opacity: 1;
+}
+.gallery .blur-div img {
+  max-width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+}
+
+@media screen and (width < 800px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+  }
+}
+@media screen and (width < 480px) {
+  .gallery {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* One column on even smaller screens */
+  }
+}
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.officer {
+  grid-column: container-start/-1;
+  margin: 0 auto;
+}
+.officer__text {
+  margin: auto;
+}
+.officer__text--title {
+  line-height: 1.2;
+  font-size: calc(1.8rem + 1.2vw);
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-secondary);
+  font-family: "Roboto";
+}
+.officer__text--para {
+  letter-spacing: 0.1rem;
+  text-align: justify;
+  font-size: calc(1rem + 0.5vw);
+}
+.officer .img {
+  max-width: 50em;
+  float: left;
+  margin: 1.6rem;
+}
+.officer .img img {
+  display: block;
+  border: 1px solid var(--color-text-grey);
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Maintain aspect ratio and cover container */
+}
+
+.centenary {
+  grid-column: col-start 1 / col-end 8;
+  background-color: #f2f3e4;
+  display: flex;
+  gap: 2rem;
+}
+.centenary__img {
+  flex: 0 0 14rem;
+}
+.centenary__img img {
+  width: 100%;
+  height: 100%;
+}
+.centenary__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.centenary__text--title {
+  line-height: 1.2;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-size: calc(1.5rem + 1vw);
+  text-align: center;
+  color: var(--color-tertiary);
+  margin-bottom: 1rem;
+}
+.centenary__text--para {
+  letter-spacing: 0.1rem;
+  align-self: flex-start;
+}
+.centenary__text a {
+  align-self: flex-start;
+  color: rgb(101, 3, 3);
+  font-weight: 700;
+  transition: color 0.2s ease-in-out;
+}
+.centenary__text a:hover {
+  color: #000000;
+}
+
+.general {
+  grid-column: container-start/-1;
+  display: flex;
+  align-items: flex-start;
+  gap: 5rem;
+}
+.general .prayer {
+  flex: 0 1 60%;
+  text-align: justify;
+  text-rendering: optimizeLegibility;
+}
+.general .prayer__title {
+  line-height: 1.1;
+  font-size: calc(1.8rem + 1.2vw);
+  font-weight: 500;
+  font-family: "Roboto";
+  color: var(--color-secondary);
+}
+.general .prayer > p {
+  letter-spacing: 0.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-bottom: 1.6rem;
+}
+.general .patrician {
+  background-color: var(--color-secondary);
+  border: 1px solid rgb(201, 194, 194);
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5vh 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 2em;
+}
+.general .patrician h3,
+.general .patrician h4,
+.general .patrician h5 {
+  text-align: center;
+  letter-spacing: 0.15rem;
+  line-height: 1.6;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #f8f8ff;
+}
+.general .patrician h4 {
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  font-size: 1.7rem;
+  color: #fffada;
+}
+.general .patrician h5 {
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: #fff1e6;
+}
+.general .saint {
+  background-color: rgba(122, 159, 160, 0.4862745098);
+  padding: 1.5vh 1vw;
+  min-height: min-content;
+  flex: 1;
+  border: 1px solid var(--color-text-grey);
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 2em;
+}
+.general .saint__title {
+  text-align: center;
+  line-height: 1.1;
+  font-size: calc(1rem + 1vw);
+  font-weight: 500;
+  font-family: "Roboto";
+  color: var(--color-secondary);
+}
+.general .saint__img {
+  max-width: 45em;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+.general .saint__img #saint__image {
+  width: 100%;
+  height: 100%;
+}
+.general .saint__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.general .saint__info h3,
+.general .saint__info h4,
+.general .saint__info h5 {
+  letter-spacing: 0.15rem;
+  line-height: 1.6;
+  font-weight: 600;
+  font-size: 2rem;
+}
+.general .saint__info h4 {
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+}
+.general .saint__info h5 {
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.general .saint__info p {
+  letter-spacing: 0.1rem;
+  line-height: 1.7;
+  font-weight: 300;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+@media screen and (width < 50em) {
+  .general {
+    flex-direction: column;
+  }
+  .general .prayer {
+    flex: 0 1 auto;
+    order: 2;
+  }
+  .general .patrician {
+    order: 1;
+  }
+}
+.publications {
+  grid-column: container-start/-1;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 5;
+  gap: 2rem;
+}
+.publications__card {
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 2em;
+  padding: 2vh 1vw;
+  flex-basis: calc(35rem - 3vw);
+  margin-bottom: 2rem; /* Spacing between cards */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+  /* Grayscale effect */
+}
+.publications__card:hover {
+  transform: scale(1.1); /* Increase size on hover */
+}
+.publications__card:not(:hover) {
+  filter: grayscale(100%);
+}
+.publications__card--img {
+  margin-top: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
+  width: 70%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  background: transparent;
+}
+.publications__card h3 {
+  background-color: var(--color-tertiary);
+  padding: 3px 6px;
+  border-radius: 1rem;
+  font-family: "Pacifico", cursive;
+}
+
+@media screen and (width < 700px) {
+  .publications__card {
+    transition: none;
+    /* Grayscale effect */
+  }
+  .publications__card:hover {
+    transform: none; /* Increase size on hover */
+  }
+  .publications__card:not(:hover) {
+    filter: none;
+  }
+}
+#bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url("../img/praesidium/Mirror-of-justice-1.JPG"),
+    linear-gradient(to right, rgb(186, 188, 162) 0%, rgb(218, 208, 30) 90%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay, darken;
+}
+
+.about {
+  margin: 10rem auto;
+  width: 90%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 2em;
+  padding: 2vh 1vw;
+  backdrop-filter: blur(10px);
+}
+.about__title {
+  color: blue;
+  letter-spacing: 0.4rem;
+  line-height: 1.7;
+}
+.about__para {
+  letter-spacing: 0.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-bottom: 1.6rem;
+}
+
+@media screen and (width < 50em) {
+  .about {
+    margin: 5rem 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: justify;
+  }
+  .about__title {
+    text-align: center;
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
+  }
+} /*# sourceMappingURL=styles.css.map */
