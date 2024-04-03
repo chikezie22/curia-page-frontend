@@ -77,67 +77,68 @@ const div = document.querySelector(".saint");
 
 const pat = document.querySelector(".patrician");
 
-window.addEventListener("DOMContentLoaded", async () => {
-  const showSaintDiv = () => {
-    const saintDiv = document.querySelector(".saint");
-    if (saintDiv) {
-      saintDiv.classList.remove("hidden");
-    } else {
-      console.log("Element with class 'saint' not found.");
-    }
-  };
+// window.addEventListener("DOMContentLoaded", async () => {
+//   const showSaintDiv = () => {
+//     const saintDiv = document.querySelector(".saint");
+//     if (saintDiv) {
+//       saintDiv.classList.remove("hidden");
+//     } else {
+//       console.log("Element with class 'saint' not found.");
+//     }
+//   };
 
-  const hideSaintDiv = () => {
-    const saintDiv = document.querySelector(".saint");
+//   const hideSaintDiv = () => {
+//     const saintDiv = document.querySelector(".saint");
 
-    if (saintDiv) {
-      saintDiv.classList.add("hidden");
-    } else {
-      console.log("Element with class 'saint' not found.");
-    }
-  };
+//     if (saintDiv) {
+//       saintDiv.classList.add("hidden");
+//     } else {
+//       console.log("Element with class 'saint' not found.");
+//     }
+//   };
 
-  // Hide the saint div by default
-  hideSaintDiv();
+//   // Hide the saint div by default
+//   hideSaintDiv();
 
-  const apiCall = async function () {
-    // Load environment variables from .env file
-    try {
-      const response = await fetch(
-        "https://curia-backend.onrender.com/api/saint-of-the-day"
-      );
-      // console.log(process.env.RENDER_APP_API_URL);
-      const data = await response.json();
+//   const apiCall = async function () {
+//     // Load environment variables from .env file
+//     try {
+//       const response = await fetch(
+//         "https://curia-backend.onrender.com/api/saint-of-the-day"
+//       );
+//       // console.log(process.env.RENDER_APP_API_URL);
+//       const data = await response.json();
 
-      if (!data || Object.keys(data).length === 0) {
-        hideSaintDiv();
-        return; // Exit function if data is empty
-      }
+//       if (!data || Object.keys(data).length === 0) {
+//         hideSaintDiv();
+//         return; // Exit function if data is empty
+//       }
 
-      // Update HTML content with fetched data
-      document.getElementById("saint__name").textContent =
-        data.saintOfTheDay || "";
-      document.getElementById("saint__image").src = data.imageUrl || "";
-      document.getElementById("saint__text").textContent = data.h4Text || "";
-      document.getElementById("saint__dob").textContent = data.h5Text || "";
+//       // Update HTML content with fetched data
+//       document.getElementById("saint__name").textContent =
+//         data.saintOfTheDay || "";
+//       document.getElementById("saint__image").src = data.imageUrl || "";
+//       document.getElementById("saint__text").textContent = data.h4Text || "";
+//       document.getElementById("saint__dob").textContent = data.h5Text || "";
 
-      // Update paragraphs
-      const paragraphsContainer = document.getElementById("saint__paragraphs");
-      paragraphsContainer.innerHTML = ""; // Clear existing content
-      data.paragraphs.forEach((paragraph) => {
-        const p = document.createElement("p");
-        p.textContent = paragraph;
-        paragraphsContainer.appendChild(p);
-      });
+//       // Update paragraphs
+//       const paragraphsContainer = document.getElementById("saint__paragraphs");
+//       paragraphsContainer.innerHTML = ""; // Clear existing content
+//       data.paragraphs.forEach((paragraph) => {
+//         const p = document.createElement("p");
+//         p.textContent = paragraph;
+//         paragraphsContainer.appendChild(p);
+//       });
 
-      // Show the saint div when data is available
-      showSaintDiv();
-    } catch (error) {
-      console.error(error);
-      hideSaintDiv();
-    }
-  };
+//       // Show the saint div when data is available
+//       showSaintDiv();
+//     } catch (error) {
+//       console.error(error);
+//       hideSaintDiv();
+//     }
+//   };
 
-  apiCall();
-  getCurrentMonthData();
-});
+//   apiCall();
+
+// });
+getCurrentMonthData();
