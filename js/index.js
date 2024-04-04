@@ -312,6 +312,7 @@ window.addEventListener("DOMContentLoaded", function () {
 // });
 
 // ************************************************************************
+
 document.addEventListener("DOMContentLoaded", async () => {
   const saintDiv = document.querySelector(".saint");
 
@@ -331,6 +332,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
+  const fetchDataFromCache = async () => {
+    try {
+      const cachedData = localStorage.getItem("cachedData");
+      if (cachedData) {
+        const parsedData = JSON.parse(cachedData);
+        const dataHash = generateDataHash(parsedData); // Generate a hash of the cached data
+
+        // Compare the cached data hash with the last known hash
+        if (dataHash === localStorage.getItem("cachedDataHash")) {
+          updateDOM(parsedData); // Data in cache is up to date, use it
+        } else {
+          await fetchData(); // Fetch data from the server if cache is outdated
+        }
+      } else {
+        await fetchData(); // Fetch data from the server if not available in cache
+      }
+    } catch (error) {
+      console.error("Error fetching data from cache:", error);
+      hideSaintDiv();
+    }
+  };
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -343,11 +366,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!data || Object.keys(data).length === 0) {
         hideSaintDiv();
-        return; // Exit function if data is empty
+        return null; // Exit function if data is empty
       }
 
       // Store fetched data in local storage for caching
       localStorage.setItem("cachedData", JSON.stringify(data));
+      localStorage.setItem("cachedDataHash", generateDataHash(data)); // Update the hash
 
       updateDOM(data);
     } catch (error) {
@@ -356,19 +380,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  const fetchDataFromCache = async () => {
-    try {
-      const cachedData = localStorage.getItem("cachedData");
-      if (cachedData) {
-        const parsedData = JSON.parse(cachedData);
-        updateDOM(parsedData);
-      } else {
-        await fetchData(); // Fetch data from the server if not available in cache
-      }
-    } catch (error) {
-      console.error("Error fetching data from cache:", error);
-      hideSaintDiv();
+  const generateDataHash = (data) => {
+    // Generate a hash based on specific properties of the data
+    const { saintOfTheDay, imageUrl, h4Text, h5Text, paragraphs } = data;
+    const dataString = JSON.stringify({
+      saintOfTheDay,
+      imageUrl,
+      h4Text,
+      h5Text,
+      paragraphs,
+    });
+    // You can use a hashing library or custom hashing function here
+    // For simplicity, let's assume a basic hashing function
+    return hashCode(dataString);
+  };
+
+  // Basic hash code generation function (can be replaced with a more robust implementation)
+  const hashCode = (str) => {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash &= hash; // Convert to 32bit integer
     }
+    return hash.toString();
   };
 
   const updateDOM = (data) => {
