@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // Fetch data from cache or server
-  // fetchDataFromCache();
+  fetchDataFromCache();
 });
 
 // ************************************************************************
