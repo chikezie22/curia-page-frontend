@@ -112,7 +112,7 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const url = "https://axios-zeta.vercel.app";
+// const url = "https://axios-zeta.vercel.app";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const showSaintDiv = () => {
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // Fetch data from cache or server
-  fetchDataFromCache();
+  // fetchDataFromCache();
 });
 
 // ************************************************************************

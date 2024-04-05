@@ -83,7 +83,7 @@ html {
 body {
   line-height: 1.7;
   font-family: "Roboto", sans-serif;
-  background-color: var(--color-primary);
+  background-color: #fffff0;
   overflow-x: hidden;
 }
 
@@ -364,6 +364,9 @@ hr {
     0% 20%
   );
 }
+.second__img img.mobile {
+  display: none;
+}
 .second__content {
   width: 60%;
   display: flex;
@@ -405,6 +408,14 @@ hr {
   .second__img {
     width: 100%;
     filter: blur(7px);
+  }
+
+  .second__img img.desktop {
+    display: none;
+  }
+
+  .second__img img.mobile {
+    display: block;
   }
 }
 @media screen and (width < 37.5em) {
