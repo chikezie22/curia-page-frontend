@@ -234,47 +234,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${url}/api/saint-of-the-day`);
-      const data = await response.json();
-
-      if (!data || Object.keys(data).length === 0) {
-        hideSaintDiv();
-        return null; // Exit function if data is empty
-      }
-
-      // Get cached data from local storage
-      const cachedData = JSON.parse(localStorage.getItem("cachedData"));
-
-      if (!cachedData) {
-        // If there's no cached data, use fetched data
-        updateHTML(data);
-        localStorage.setItem("cachedData", JSON.stringify(data)); // Set cached data
-      } else {
-        // Compare fetched data with cached data
-        const isDataChanged =
-          JSON.stringify(data) !== JSON.stringify(cachedData);
-
-        if (isDataChanged) {
-          // If data has changed, update cache with new data
-          localStorage.setItem("cachedData", JSON.stringify(data));
-        }
-
-        // Update HTML content with the fetched or cached data
-        updateHTML(data);
-      }
-
-      // Show the saint div
-      showSaintDiv();
-    } catch (error) {
-      console.error(error);
-      hideSaintDiv();
-    }
-  };
-
   const updateHTML = (data) => {
-    // Update HTML content with the fetched data
+    // Update HTML content with the data
     document.getElementById("saint__name").textContent =
       data.saintOfTheDay || "";
     document.getElementById("saint__image").src = data.imageUrl || "";
@@ -289,8 +250,56 @@ document.addEventListener("DOMContentLoaded", async () => {
       p.textContent = paragraph;
       paragraphsContainer.appendChild(p);
     });
+
+    // Show the saint div
+    showSaintDiv();
   };
 
-  // Fetch data
-  fetchData();
+  // Get cached data from local storage
+  const cachedDataString = localStorage.getItem("cachedData");
+
+  if (cachedDataString) {
+    const cachedData = JSON.parse(cachedDataString);
+    const lastRequestDate = new Date(cachedData.lastRequestDate);
+    const currentDate = new Date();
+
+    // Calculate the difference in hours
+    const diffHours = Math.abs(currentDate - lastRequestDate) / 36e5;
+
+    if (diffHours < 10) {
+      // If less than 10 hours have passed, use cached data
+      updateHTML(cachedData);
+    } else {
+      // If more than 24 hours have passed, fetch new data from the server
+      fetchData();
+    }
+  } else {
+    // If there's no cached data, fetch data from the server
+    fetchData();
+  }
+
+  async function fetchData() {
+    try {
+      const response = await fetch(`${url}/api/saint-of-the-day`);
+      const data = await response.json();
+
+      if (!data || Object.keys(data).length === 0) {
+        hideSaintDiv();
+        return null; // Exit function if data is empty
+      }
+
+      // Update HTML content with the fetched data
+      updateHTML(data);
+
+      // Store fetched data along with the current date in local storage for caching
+      const currentDate = new Date();
+      localStorage.setItem(
+        "cachedData",
+        JSON.stringify({ ...data, lastRequestDate: currentDate })
+      );
+    } catch (error) {
+      console.error(error);
+      hideSaintDiv();
+    }
+  }
 });
