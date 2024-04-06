@@ -112,7 +112,108 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// const url = "https://axios-zeta.vercel.app";
+// document.addEventListener("DOMContentLoaded", async () => {
+//   const url = "https://axios-zeta.vercel.app";
+//   const showSaintDiv = () => {
+//     const saintDiv = document.querySelector(".saint");
+//     if (saintDiv) {
+//       saintDiv.classList.remove("hidden");
+//     } else {
+//       console.log("Element with class 'saint' not found.");
+//     }
+//   };
+
+//   const hideSaintDiv = () => {
+//     const saintDiv = document.querySelector(".saint");
+//     if (saintDiv) {
+//       saintDiv.classList.add("hidden");
+//     } else {
+//       console.log("Element with class 'saint' not found.");
+//     }
+//   };
+
+//   const fetchData = async () => {
+//     try {
+//       const response = await fetch(`${url}/api/saint-of-the-day`);
+//       // console.log(response);
+//       const data = await response.json();
+
+//       if (!data || Object.keys(data).length === 0) {
+//         hideSaintDiv();
+//         return null; // Exit function if data is empty
+//       }
+
+//       // Store fetched data in local storage for caching
+//       localStorage.setItem("cachedData", JSON.stringify(data));
+
+//       // Update HTML content with fetched data
+//       document.getElementById("saint__name").textContent =
+//         data.saintOfTheDay || "";
+//       document.getElementById("saint__image").src = data.imageUrl || "";
+//       document.getElementById("saint__text").textContent = data.h4Text || "";
+//       document.getElementById("saint__dob").textContent = data.h5Text || "";
+
+//       // Update paragraphs
+//       const paragraphsContainer = document.getElementById("saint__paragraphs");
+//       paragraphsContainer.innerHTML = ""; // Clear existing content
+//       data.paragraphs.forEach((paragraph) => {
+//         const p = document.createElement("p");
+//         p.textContent = paragraph;
+//         paragraphsContainer.appendChild(p);
+//       });
+
+//       // Show the saint div when data is available
+//       showSaintDiv();
+//     } catch (error) {
+//       console.error(error);
+//       hideSaintDiv();
+//     }
+//   };
+
+//   const fetchDataFromCache = () => {
+//     try {
+//       const cachedData = localStorage.getItem("cachedData");
+//       if (cachedData) {
+//         const parsedData = JSON.parse(cachedData);
+//         // Update HTML content with cached data
+//         document.getElementById("saint__name").textContent =
+//           parsedData.saintOfTheDay || "";
+//         document.getElementById("saint__image").src = parsedData.imageUrl || "";
+//         document.getElementById("saint__text").textContent =
+//           parsedData.h4Text || "";
+//         document.getElementById("saint__dob").textContent =
+//           parsedData.h5Text || "";
+
+//         // Update paragraphs
+//         const paragraphsContainer =
+//           document.getElementById("saint__paragraphs");
+//         paragraphsContainer.innerHTML = ""; // Clear existing content
+//         parsedData.paragraphs.forEach((paragraph) => {
+//           const p = document.createElement("p");
+//           p.textContent = paragraph;
+//           paragraphsContainer.appendChild(p);
+//         });
+
+//         // Show the saint div when cached data is available
+//         showSaintDiv();
+//       } else {
+//         // Fetch data from the server if not available in cache
+//         fetchData();
+//       }
+//     } catch (error) {
+//       console.error("Error fetching data from cache:", error);
+//       hideSaintDiv();
+//     }
+//   };
+
+//   // Fetch data from cache or server
+//   fetchDataFromCache();
+// });
+
+// ************************************************************************
+
+// newer code lets check to see if it functions as expected 🥲🥲🥲🥲🥲🥲🥲🥲🥲
+const url = "https://axios-zeta.vercel.app";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const showSaintDiv = () => {
@@ -143,26 +244,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         return null; // Exit function if data is empty
       }
 
-      // Store fetched data in local storage for caching
-      localStorage.setItem("cachedData", JSON.stringify(data));
+      // Get cached data from local storage
+      const cachedData = JSON.parse(localStorage.getItem("cachedData"));
 
-      // Update HTML content with fetched data
-      document.getElementById("saint__name").textContent =
-        data.saintOfTheDay || "";
-      document.getElementById("saint__image").src = data.imageUrl || "";
-      document.getElementById("saint__text").textContent = data.h4Text || "";
-      document.getElementById("saint__dob").textContent = data.h5Text || "";
+      if (!cachedData) {
+        // If there's no cached data, use fetched data
+        updateHTML(data);
+        localStorage.setItem("cachedData", JSON.stringify(data)); // Set cached data
+      } else {
+        // Compare fetched data with cached data
+        const isDataChanged =
+          JSON.stringify(data) !== JSON.stringify(cachedData);
 
-      // Update paragraphs
-      const paragraphsContainer = document.getElementById("saint__paragraphs");
-      paragraphsContainer.innerHTML = ""; // Clear existing content
-      data.paragraphs.forEach((paragraph) => {
-        const p = document.createElement("p");
-        p.textContent = paragraph;
-        paragraphsContainer.appendChild(p);
-      });
+        if (isDataChanged) {
+          // If data has changed, update cache with new data
+          localStorage.setItem("cachedData", JSON.stringify(data));
+        }
 
-      // Show the saint div when data is available
+        // Update HTML content with the fetched or cached data
+        updateHTML(data);
+      }
+
+      // Show the saint div
       showSaintDiv();
     } catch (error) {
       console.error(error);
@@ -170,44 +273,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  const fetchDataFromCache = () => {
-    try {
-      const cachedData = localStorage.getItem("cachedData");
-      if (cachedData) {
-        const parsedData = JSON.parse(cachedData);
-        // Update HTML content with cached data
-        document.getElementById("saint__name").textContent =
-          parsedData.saintOfTheDay || "";
-        document.getElementById("saint__image").src = parsedData.imageUrl || "";
-        document.getElementById("saint__text").textContent =
-          parsedData.h4Text || "";
-        document.getElementById("saint__dob").textContent =
-          parsedData.h5Text || "";
+  const updateHTML = (data) => {
+    // Update HTML content with the fetched data
+    document.getElementById("saint__name").textContent =
+      data.saintOfTheDay || "";
+    document.getElementById("saint__image").src = data.imageUrl || "";
+    document.getElementById("saint__text").textContent = data.h4Text || "";
+    document.getElementById("saint__dob").textContent = data.h5Text || "";
 
-        // Update paragraphs
-        const paragraphsContainer =
-          document.getElementById("saint__paragraphs");
-        paragraphsContainer.innerHTML = ""; // Clear existing content
-        parsedData.paragraphs.forEach((paragraph) => {
-          const p = document.createElement("p");
-          p.textContent = paragraph;
-          paragraphsContainer.appendChild(p);
-        });
-
-        // Show the saint div when cached data is available
-        showSaintDiv();
-      } else {
-        // Fetch data from the server if not available in cache
-        fetchData();
-      }
-    } catch (error) {
-      console.error("Error fetching data from cache:", error);
-      hideSaintDiv();
-    }
+    // Update paragraphs
+    const paragraphsContainer = document.getElementById("saint__paragraphs");
+    paragraphsContainer.innerHTML = ""; // Clear existing content
+    data.paragraphs.forEach((paragraph) => {
+      const p = document.createElement("p");
+      p.textContent = paragraph;
+      paragraphsContainer.appendChild(p);
+    });
   };
 
-  // Fetch data from cache or server
-  fetchDataFromCache();
+  // Fetch data
+  fetchData();
 });
-
-// ************************************************************************
