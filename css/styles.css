@@ -708,6 +708,10 @@ footer {
   margin-bottom: 1rem;
 }
 
+.general .together {
+  flex: 0 1 40%;
+}
+
 @media screen and (width < 50em) {
   .general {
     flex-direction: column;
