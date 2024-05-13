@@ -4,6 +4,8 @@
 
 # curia-page-frontend
 This is the frontend section of the curia page
+# Project Link
+https://virgin-most-prudent-curia.netlify.app/
 
 
 ## Project Overview
